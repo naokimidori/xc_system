@@ -12,4 +12,6 @@ app.use((ctx) => {
   ctx.body = 'hello vino~'
 })
 
-app.listen(3000)
+app.listen(3000, () => {
+  console.log(`Server Start At http://localhost:3000/`)
+})
