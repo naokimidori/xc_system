@@ -1,10 +1,12 @@
 import Koa from 'koa'
 import cors from '@koa/cors'
 import bodyParser from 'koa-bodyparser'
+import { logger } from './logger'
 
 
 const app = new Koa()
 
+app.use(logger())
 app.use(cors())
 app.use(bodyParser())
 
