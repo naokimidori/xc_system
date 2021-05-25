@@ -1,16 +1,25 @@
-import Koa from 'koa'
-import cors from '@koa/cors'
-import bodyParser from 'koa-bodyparser'
-import { logger } from './logger'
-import router from './routes'
+import "reflect-metadata";
+import Koa from "koa";
+import cors from "@koa/cors";
+import bodyParser from "koa-bodyparser";
+import { createConnection } from "typeorm";
 
-const app = new Koa()
+import { logger } from "./logger";
+import router from "./routes";
 
-app.use(logger())
-app.use(cors())
-app.use(bodyParser())
+createConnection()
+  .then(() => {
+    const app = new Koa();
 
-// 响应用户请求
-app.use(router.routes()).use(router.allowedMethods())
+    app.use(logger());
+    app.use(cors());
+    app.use(bodyParser());
 
-app.listen(3000)
+    // 响应用户请求
+    app.use(router.routes()).use(router.allowedMethods());
+
+    app.listen(3000);
+  })
+  .catch((err: string) => {
+    console.log("TypeORM connection error", err);
+  });
