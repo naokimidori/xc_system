@@ -1,6 +1,5 @@
 import { Context } from 'koa'
 import { getManager } from 'typeorm'
-import { createContext } from 'vm'
 
 import { User } from '../entity/user'
 

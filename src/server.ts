@@ -28,7 +28,7 @@ createConnection()
     app.use(protectedRouter.routes()).use(protectedRouter.allowedMethods())
 
     app.listen(3000).on('listening', () => {
-      console.log(`Server Start At https://localhost:3000`.blue.bold)
+      console.log(`Server Start At http://localhost:3000`.blue.bold)
     })
   })
   .catch((err: string) => {
